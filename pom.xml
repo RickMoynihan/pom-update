@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>rickmoynihan</groupId>
   <artifactId>pom-update</artifactId>
-  <version>0.1.5</version>
+  <version>0.1.6</version>
   <name>pom</name>
   <description>A simple tool for use with tools.deps and the clojure command line tools, to update a `pom.xml` file with overriden values.</description>
   <url>https://github.com/rickmoynihan/pom-update</url>
@@ -21,7 +21,7 @@
     <url>https://github.com/rickmoynihan/pom-update</url>
     <connection>scm:git:git://github.com/rickmoynihan/pom-update.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/rickmoynihan/pom-update.git</developerConnection>
-    <tag>0.1.5</tag>
+    <tag>0.1.6</tag>
   </scm>
   <dependencies>
     <dependency>
