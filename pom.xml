@@ -18,7 +18,7 @@
     </developer>
   </developers>
   <scm>
-    <url>https://github.com/rickmoynihan/pom</url>
+    <url>https://github.com/rickmoynihan/pom-update</url>
     <connection>scm:git:git://github.com/rickmoynihan/pom-update.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/rickmoynihan/pom-update.git</developerConnection>
     <tag>0.1.5</tag>
