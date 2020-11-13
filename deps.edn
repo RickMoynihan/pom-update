@@ -17,7 +17,7 @@
                     :jar "pom-update.jar"
                     :verbose true}
         }
-  :install {:extra-deps {swirrl/deps-deploy {:mvn/version "0.1.4"}}
+  :install {:extra-deps {swirrl/deps-deploy {:mvn/version "0.1.5"}}
             :exec-fn deps-deploy.deps-deploy/deploy
             :exec-args {:installer :local
                         :artifact "pom-update.jar"}}
@@ -28,7 +28,7 @@
                            :mvn/version "0.1.0"}}
 
 
-  :deploy {:extra-deps {swirrl/deps-deploy {:mvn/version "0.1.4"}}
+  :deploy {:extra-deps {swirrl/deps-deploy {:mvn/version "0.1.5"}}
            :exec-fn deps-deploy.deps-deploy/deploy
            :exec-args {:installer :remote
                        :sign-releases? true
