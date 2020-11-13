@@ -37,13 +37,13 @@
 (defn- transform-pom
   "Takes a map of options and assoc's a new ::transformed-pom key with
   the transformed pom as a string of xml."
-  [{:keys [pom-file
+  [{:keys [pom/input-file
            mvn/version
            mvn/group-id
            mvn/artifact-id
            scm/tag] :as opts}]
   (let [transforms (build-transforms opts)
-        t-pom (-> (or pom-file "pom.xml")
+        t-pom (-> (or input-file "pom.xml")
                   io/reader
                   xml/parse
                   (clojure.core/update :content
@@ -68,9 +68,9 @@
   "NOTE: This function is suitable and intended for -X invocation using
    the clojure CLI tools.
 
-   Updates pom/input-file by rewriting the corresponding tags in the
-  pom. Only a subset of pom keys are currently supported for
-  overwriting they are:
+   Updates :pom/input-file by rewriting the corresponding tags in the
+   pom. Only a subset of pom keys are currently supported for
+   overwriting they are:
 
    :mvn/version
    :mvn/artifact-id
