@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>rickmoynihan</groupId>
-  <artifactId>pom</artifactId>
-  <version>0.1.1</version>
+  <artifactId>pom-update</artifactId>
+  <version>0.1.2</version>
   <name>pom</name>
   <description>A simple tool for use with tools.deps and the clojure command line tools, to update a `pom.xml` file with overriden values.</description>
   <url>https://github.com/rickmoynihan/pom</url>
