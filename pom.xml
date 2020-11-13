@@ -4,7 +4,7 @@
   <artifactId>pom</artifactId>
   <version>0.1.0</version>
   <name>pom</name>
-  <description>FIXME: my new library.</description>
+  <description>A simple tool for use with tools.deps and the clojure command line tools, to update a `pom.xml` file with overriden values.</description>
   <url>https://github.com/rickmoynihan/pom</url>
   <licenses>
     <license>
@@ -14,7 +14,7 @@
   </licenses>
   <developers>
     <developer>
-      <name>Rick</name>
+      <name>Rick Moynihan</name>
     </developer>
   </developers>
   <scm>
