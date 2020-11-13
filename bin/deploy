@@ -3,4 +3,4 @@
 cd `dirname $0`
 cd ..
 
-clojure -X:deps-deploy '[:repository "clojars" :password]' $CLOJARS_TOKEN
+clojure -X:deploy '[:repository "clojars" :password]' "\"$CLOJARS_TOKEN\""
