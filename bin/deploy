@@ -1,6 +1,17 @@
 #!/bin/bash
 
+set -o errexit
+
 cd `dirname $0`
 cd ..
 
+# refresh dependencies in pom.xml
+clojure -Spom
+# update version number from deps.edn etc...
+clojure -X:pom-update
+
+# create jar
+clojure -X:jar
+
+# deploy
 clojure -X:deploy '[:repository "clojars" :password]' "\"$CLOJARS_TOKEN\""
