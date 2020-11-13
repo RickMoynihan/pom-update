@@ -5,7 +5,7 @@
   <version>0.1.4</version>
   <name>pom</name>
   <description>A simple tool for use with tools.deps and the clojure command line tools, to update a `pom.xml` file with overriden values.</description>
-  <url>https://github.com/rickmoynihan/pom</url>
+  <url>https://github.com/rickmoynihan/pom-update</url>
   <licenses>
     <license>
       <name>Eclipse Public License</name>
@@ -19,8 +19,8 @@
   </developers>
   <scm>
     <url>https://github.com/rickmoynihan/pom</url>
-    <connection>scm:git:git://github.com/rickmoynihan/pom.git</connection>
-    <developerConnection>scm:git:ssh://git@github.com/rickmoynihan/pom.git</developerConnection>
+    <connection>scm:git:git://github.com/rickmoynihan/pom-update.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/rickmoynihan/pom-update.git</developerConnection>
     <tag>0.1.4</tag>
   </scm>
   <dependencies>
