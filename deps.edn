@@ -10,9 +10,29 @@
                  :sha "b6b3193fcc42659d7e46ecd1884a228993441182"}}
    :main-opts ["-m" "cognitect.test-runner"
                "-d" "test"]}
-  :jar {:extra-deps {seancorfield/depstar {:mvn/version "1.1.128"}}
-        :main-opts ["-m" "hf.depstar.jar" "pom.jar"]}
-  :install {:extra-deps {slipset/deps-deploy {:mvn/version "0.1.1"}}
-            :main-opts ["-m" "deps-deploy.deps-deploy" "install" "pom.jar"]}
-  :deploy {:extra-deps {slipset/deps-deploy {:mvn/version "0.1.1"}}
-           :main-opts ["-m" "deps-deploy.deps-deploy" "deploy" "pom.jar"]}}}
+  :jar {:extra-deps
+        {seancorfield/depstar {:mvn/version "1.1.132"}}
+        :exec-fn hf.depstar/jar
+        :exec-args {:jar-type :thin
+                    :jar "pom-update.jar"
+                    :verbose true}
+        }
+  :install {:extra-deps {swirrl/deps-deploy {:mvn/version "0.1.4"}}
+            :exec-fn deps-deploy.deps-deploy/deploy
+            :exec-args {:installer :local
+                        :artifact "pom-update.jar"}}
+
+  :pom-update {:exec-fn rickmoynihan.pom/update
+               :exec-args {:pom/input-file "pom.xml"
+                           :pom/write-strategy :overwrite
+                           :mvn/version "0.1.0"}}
+
+
+  :deploy {:extra-deps {swirrl/deps-deploy {:mvn/version "0.1.4"}}
+           :exec-fn deps-deploy.deps-deploy/deploy
+           :exec-args {:installer :remote
+                       :sign-releases? true
+                       :repository {"clojars" {:url "https://clojars.org/repo"
+                                               :username "rickmoynihan"
+                                               :password "SET VIA ENV VAR"}}
+                       :artifact "pom-update.jar"}}}}
