@@ -7,30 +7,61 @@ either `:exec-args` data or via the command line.
 It is suitable for `clojure -X` invocation and usage as a small
 library.
 
+It is hoped that this library will soon be made redundant by
+`tools.build` a rumoured build tool by the Clojure core team.
+
+## FAQ
+
+_What should I use this for?_
+
+Automatically updating metadata in a Clojure libraries `pom.xml`,
+typically setting the maven version and scm tag to a build number
+provided by your CI system.
+
+_Can't I just use `clojure -Spom` or `clojure -X:deps mvn-pom`?_
+
+Yes if you don't mind manually deploying library changes and setting
+the version number yourself.
+
+If you want to automate the deployment to deploy your clojure library
+with a version number determined by CI (e.g. the `BUILD_ID` or a
+commit SHA) then you probably want to use this simple tool to assist.
+
+Tools deps almost has the functionality to do this, however with
+`tools.build` on the horizon it's not a feature they care to
+prioritise.
+
 ## Usage
 
-FIXME: write usage documentation!
+Add `rickmoynihan/pom-update {:mvn/version "0.1.6"}` to an appropriate
+alias in your `deps.edn`, e.g.
 
-Invoke a library API function from the command-line:
+``` clojure
+{:deps { ,,, ,,, }
+ :aliases {
+   :update-version {
+     :extra-deps {rickmoynihan/pom-update {:mvn/version "0.1.6"}}
+     :exec-fn rickmoynihan.pom/update }}}
+```
 
-    $ clojure -X rickmoynihan.pom/foo :a 1 :b '"two"'
-    {:a 1, :b "two"} "Hello, World!"
+Then at build time, prior to creating a jar for your library run the
+following command:
 
-Run the project's tests (they'll fail until you edit them):
+`clojure -X:update-version :mvn/version "\"$BUILD_NUMBER\"" :scm/tag "\"$BUILD_NUMBER\""`
 
-    $ clojure -M:test:runner
+You may also wish to automate calling `clojure -X:deps mvn-pom` prior
+to the above call (to ensure dependencies etc are synced properly from
+`deps.edn` into `pom.xml`). If you don't do this you'll need to make
+sure you commit `pom.xml` after each meaningful update to your
+`deps.edn`.
 
-Build a deployable jar of this library:
+## Other libraries
 
-    $ clojure -M:jar
-
-Install it locally:
-
-    $ clojure -M:install
-
-Deploy it to Clojars -- needs `CLOJARS_USERNAME` and `CLOJARS_PASSWORD` environment variables:
-
-    $ clojure -M:deploy
+This library is intended to work with
+[depstar](https://github.com/seancorfield/depstar) for building
+library jars, and
+[deps-deploy](https://github.com/seancorfield/depstar) for deploying
+them to either clojars or a private maven repository.
 
 ## License
 
