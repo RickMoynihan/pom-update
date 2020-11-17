@@ -41,7 +41,9 @@ alias in your `deps.edn`, e.g.
  :aliases {
    :update-version {
      :extra-deps {rickmoynihan/pom-update {:mvn/version "0.1.6"}}
-     :exec-fn rickmoynihan.pom/update }}}
+     :exec-fn rickmoynihan.pom/update
+     :exec-args {:pom/write-strategy :overwrite
+                 :pom/input-file "pom.xml"}}}}
 ```
 
 Then at build time, prior to creating a jar for your library run the
