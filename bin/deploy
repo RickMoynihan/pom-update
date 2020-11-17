@@ -8,7 +8,7 @@ cd ..
 # refresh dependencies in pom.xml
 clojure -Spom
 # update version number from deps.edn etc...
-clojure -X:pom-update
+clojure -X:pom-update ':mvn/version' "\"0.2.$GITHUB_RUN_NUMBER\"" ':scm/tag' "\"$GITHUB_RUN_NUMBER\""
 
 # create jar
 clojure -X:jar

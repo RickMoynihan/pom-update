@@ -1,0 +1,21 @@
+name: Deploy Library
+
+on: [push, pull_request]
+
+jobs:
+  deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Setup Clojure
+      uses: DeLaGuardo/setup-clojure@master
+      with:
+        tools-deps: '1.10.1.716'
+    - name: Describe
+      run: clojure -Sdescribe
+
+    - name: Deploy
+      run: ./bin/deploy
